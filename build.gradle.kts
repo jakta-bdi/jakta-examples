@@ -34,3 +34,8 @@ tasks.detektMain {
         project.hasProperty("runDetect")
     }
 }
+tasks.cpdKotlinCheck {
+    onlyIf {
+        project.hasProperty("runCpd")
+    }
+}
