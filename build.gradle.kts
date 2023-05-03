@@ -1,5 +1,3 @@
-group = "it.unibo.jakta"
-
 plugins {
     kotlin("jvm") version "1.8.20"
     id("org.danilopianini.gradle-kotlin-qa") version "0.38.1"
@@ -10,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    implementation("it.unibo.jakta:jakta-dsl:0.4.10")
+    implementation("it.unibo.jakta:jakta-dsl:0.5.0")
 }
 
 kotlin {

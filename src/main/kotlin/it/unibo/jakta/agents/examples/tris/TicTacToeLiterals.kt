@@ -5,6 +5,7 @@ import it.unibo.jakta.agents.bdi.actions.InternalAction
 import it.unibo.jakta.agents.bdi.dsl.beliefs.fromPercept
 import it.unibo.jakta.agents.bdi.dsl.beliefs.fromSelf
 import it.unibo.jakta.agents.bdi.dsl.plans.BodyScope
+import it.unibo.jakta.agents.bdi.dsl.plans.PlansScope
 import it.unibo.jakta.agents.examples.OwnName
 import it.unibo.tuprolog.core.Struct
 import it.unibo.tuprolog.dsl.LogicProgrammingScope
@@ -27,12 +28,11 @@ object TicTacToeLiterals {
         symbol: Any,
     ) = structOf("aligned", symbol.toTerm()).fromSelf
 
-    fun allPossibleCombinationsOf(cell: Struct, other: Struct, repetitions: Int): Sequence<List<Struct>> =
-        (1..repetitions).map { other }
-            .plus(cell)
+    fun PlansScope.allPossibleCombinationsOf(cell: Struct, other: Struct, repetitions: Int): Sequence<List<Struct>> =
+        arrayOf(Array(repetitions) { other }, arrayOf(cell)).flatten()
             .permutations()
             .distinct()
-            .map { permutation -> permutation.map { it.freshCopy() } }
+            .map { permutation -> permutation.map { it.freshCopy(this) } }
 
     context (BodyScope)
     operator fun <T : ExternalAction> T.invoke(arg: Any, vararg args: Any) {
@@ -51,4 +51,5 @@ object TicTacToeLiterals {
     val x by OwnName
     val e by OwnName
     val o by OwnName
+    val End by OwnName
 }

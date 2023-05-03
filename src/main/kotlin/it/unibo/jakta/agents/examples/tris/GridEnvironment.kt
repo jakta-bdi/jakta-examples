@@ -17,8 +17,10 @@ class GridEnvironment(
     agentIDs: Map<String, AgentID> = emptyMap(),
     externalActions: Map<String, ExternalAction> = emptyMap(),
     messageBoxes: Map<AgentID, MessageQueue> = emptyMap(),
-    perception: Perception = Perception.empty(),
-    data: Map<String, Any> = mapOf("grid" to createGrid(n)),
+    perception: Perception = Perception.of(
+        Belief.fromPerceptSource(Struct.of("turn", Atom.of("x"))),
+    ),
+    data: Map<String, Any> = mapOf("grid" to createGrid(n), "turn" to "x"),
 ) : EnvironmentImpl(externalActions, agentIDs, messageBoxes, perception, data) {
 
     companion object {
@@ -26,7 +28,7 @@ class GridEnvironment(
             Array(n) { CharArray(n) { 'e' } }
             return arrayOf(
                 charArrayOf('e', 'e', 'e'),
-                charArrayOf('x', 'x', 'e'),
+                charArrayOf('x', 'e', 'e'),
                 charArrayOf('e', 'e', 'e'),
             )
         }
@@ -44,19 +46,26 @@ class GridEnvironment(
         var newEnv = this
         if ("cell" in newData) {
             val cell = newData["cell"] as Triple<Int, Int, Char>
-            val result = copy(data = mapOf("grid" to grid.copy()))
+            val result = computeNextTurnEnvironment()
             result.grid[cell.first][cell.second] = cell.third
+            result.grid.map { println(it) }
             newEnv = result
         }
-        if ("turn" in newData) {
-            newEnv = newEnv.copy(
-                perception =
-                Perception.of(
-                    Belief.fromPerceptSource(Struct.of("turn", Atom.of(newData["turn"] as String))),
-                ),
-            )
+        if ("changeTurn" in newData) {
+            newEnv = computeNextTurnEnvironment()
         }
         return newEnv
+    }
+
+    private fun computeNextTurnEnvironment(): GridEnvironment {
+        val actualTurn = data["turn"] as String
+        val nextTurn = if (actualTurn == "x") "o" else "x"
+        return copy(
+            data = mapOf("grid" to grid.copy(), "turn" to nextTurn),
+            perception = Perception.of(
+                Belief.fromPerceptSource(Struct.of("turn", Atom.of(nextTurn))),
+            ),
+        )
     }
 
     override fun percept(): BeliefBase =

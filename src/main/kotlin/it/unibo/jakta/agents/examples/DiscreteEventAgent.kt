@@ -27,7 +27,7 @@ fun main() {
             }
         }
         executionStrategy {
-            ExecutionStrategy.oneThreadPerMas()
+            ExecutionStrategy.discreteEventExecution()
         }
     }.start()
 }

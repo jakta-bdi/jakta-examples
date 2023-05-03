@@ -32,6 +32,7 @@ fun main() {
                 }
                 +"message"("source"(S)) then {
                     iact("print"("Received message from ", S))
+                    iact("stop")
                 }
             }
         }
@@ -40,6 +41,7 @@ fun main() {
                 +"message"("source"(S)) then {
                     iact("print"("Received message from ", S))
                     execute("send"(S, "message"))
+                    iact("stop")
                 }
             }
         }

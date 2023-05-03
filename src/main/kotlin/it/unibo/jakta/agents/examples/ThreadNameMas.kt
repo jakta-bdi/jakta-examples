@@ -9,6 +9,7 @@ fun main() {
             actions {
                 action("thread", 0) {
                     println("${this.sender} thread: ${Thread.currentThread().name}")
+                    this.removeAgent(this.sender)
                 }
             }
         }
