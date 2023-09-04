@@ -1,13 +1,13 @@
-package it.unibo.jakta.agents.bdi.dsl.examples.blocksworld
+package it.unibo.jakta.agents.examples.blocksworld.planfactory
 
-import it.unibo.jakta.agents.bdi.dsl.environment
 import it.unibo.jakta.agents.bdi.dsl.mas
+import it.unibo.jakta.agents.examples.blocksworld.Environment
 import it.unibo.tuprolog.core.Atom
 
 fun main() {
     mas {
         environment {
-            from(BlocksWorldEnvironment())
+            from(Environment())
             actions {
                 action("move", 2) {
                     val upper: Atom = argument(0)

@@ -1,8 +1,8 @@
-package it.unibo.jakta.agents.examples.blocksworld
+package it.unibo.jakta.agents.examples.blocksworld.composition
 
 import it.unibo.jakta.agents.examples.OwnName
 
-object BlocksWorldLiterals {
+object Literals {
     val solve: String by OwnName
     val clear: String by OwnName
     val on: String by OwnName

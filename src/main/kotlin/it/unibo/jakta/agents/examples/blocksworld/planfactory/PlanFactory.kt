@@ -1,4 +1,4 @@
-package it.unibo.jakta.agents.bdi.dsl.examples.blocksworld
+package it.unibo.jakta.agents.examples.blocksworld.planfactory
 
 import it.unibo.jakta.agents.bdi.dsl.plans
 

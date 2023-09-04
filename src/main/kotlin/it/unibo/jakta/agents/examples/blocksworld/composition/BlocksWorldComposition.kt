@@ -1,23 +1,24 @@
-package it.unibo.jakta.agents.bdi.dsl.examples.blocksworld
+package it.unibo.jakta.agents.examples.blocksworld.composition
 
 import it.unibo.jakta.agents.bdi.dsl.mas
 import it.unibo.jakta.agents.bdi.dsl.plans
 import it.unibo.jakta.agents.bdi.goals.Achieve
 import it.unibo.jakta.agents.bdi.goals.Goal
 import it.unibo.jakta.agents.bdi.plans.Plan
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.a
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.b
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.c
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.clear
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.move
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.on
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.percept
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.self
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.solve
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.source
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.table
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.x
-import it.unibo.jakta.agents.examples.blocksworld.BlocksWorldLiterals.y
+import it.unibo.jakta.agents.examples.blocksworld.Environment
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.a
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.b
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.c
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.clear
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.move
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.on
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.percept
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.self
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.solve
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.source
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.table
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.x
+import it.unibo.jakta.agents.examples.blocksworld.composition.Literals.y
 import it.unibo.tuprolog.core.Atom
 import it.unibo.tuprolog.core.Struct
 import it.unibo.tuprolog.dsl.lp
@@ -62,7 +63,7 @@ fun main() {
     }
     mas {
         environment {
-            from(BlocksWorldEnvironment())
+            from(Environment())
             actions {
                 action("move", 2) {
                     val upper: Atom = argument(0)

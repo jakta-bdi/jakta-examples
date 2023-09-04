@@ -1,4 +1,4 @@
-package it.unibo.jakta.agents.bdi.dsl.examples.blocksworld
+package it.unibo.jakta.agents.examples.blocksworld
 
 import it.unibo.jakta.agents.bdi.AgentID
 import it.unibo.jakta.agents.bdi.actions.ExternalAction
@@ -12,7 +12,7 @@ import it.unibo.tuprolog.core.Atom
 import it.unibo.tuprolog.core.Struct
 import it.unibo.tuprolog.utils.addFirst
 
-class BlocksWorldEnvironment(
+class Environment(
     agentIDs: Map<String, AgentID> = emptyMap(),
     externalActions: Map<String, ExternalAction> = emptyMap(),
     messageBoxes: Map<AgentID, MessageQueue> = emptyMap(),
@@ -80,6 +80,6 @@ class BlocksWorldEnvironment(
         messageBoxes: Map<AgentID, MessageQueue>,
         perception: Perception,
         data: Map<String, Any>,
-    ): BlocksWorldEnvironment =
-        BlocksWorldEnvironment(agentIDs, externalActions, messageBoxes, perception, data)
+    ): Environment =
+        Environment(agentIDs, externalActions, messageBoxes, perception, data)
 }
