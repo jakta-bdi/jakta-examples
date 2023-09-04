@@ -1,3 +1,5 @@
+@file:JvmName("CollatzMas")
+
 package it.unibo.jakta.agents.examples
 
 import it.unibo.jakta.agents.bdi.dsl.mas
@@ -37,6 +39,8 @@ fun collatzMas(number: Int) = mas {
 }
 
 fun main() {
-    println("Starting Collatz Conjecture verification for 33...")
-    collatzMas(33).start()
+    print("Enter number to verify: ")
+    val number = Integer.parseInt(readln())
+    println("Starting Collatz Conjecture verification for $number...")
+    collatzMas(number).start()
 }

@@ -1,3 +1,5 @@
+@file:JvmName("PingPong")
+
 package it.unibo.jakta.agents.examples
 
 import it.unibo.jakta.agents.bdi.dsl.mas
@@ -27,8 +29,8 @@ fun main() {
         }
         agent("pinger") {
             beliefs {
-                fact("turn"("me"))
-                fact("other"("ponger"))
+                fact { "turn"("me") }
+                fact { "other"("ponger") }
             }
             goals {
                 achieve("send_ping")
@@ -47,7 +49,7 @@ fun main() {
                     update("turn"("source"("self"), "me"))
                     iact("print"("Received ball from ", R))
                     -"ball"("source"(R))
-                    iact("print"("Pinger hasDone"))
+                    execute("print"("Pinger hasDone"))
                 }
 
                 +achieve("sendMessageTo"(M, R)) then {
@@ -58,8 +60,8 @@ fun main() {
         }
         agent("ponger") {
             beliefs {
-                fact("turn"("other"))
-                fact("other"("pinger"))
+                fact { "turn"("other") }
+                fact { "other"("pinger") }
             }
             plans {
                 +"ball"("source"(S)) onlyIf {

@@ -1,3 +1,5 @@
+@file:JvmName("BlocksWorldComposition")
+
 package it.unibo.jakta.agents.examples.blocksworld.composition
 
 import it.unibo.jakta.agents.bdi.dsl.mas
@@ -84,6 +86,7 @@ fun main() {
                 +achieve(goal) then {
                     from(getPlanBody(goal))
                     iact("print"("Done!"))
+                    execute("stop")
                 }
             }
         }

@@ -1,3 +1,5 @@
+@file:JvmName("ActionsOutputs")
+
 package it.unibo.jakta.agents.examples
 
 import it.unibo.jakta.agents.bdi.dsl.mas

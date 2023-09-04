@@ -1,3 +1,7 @@
+import java.nio.charset.Charset
+
+group = "it.unibo.jakta"
+
 plugins {
     kotlin("jvm") version "1.9.10"
     id("org.danilopianini.gradle-kotlin-qa") version "0.49.1"
@@ -19,6 +23,34 @@ kotlin {
                 freeCompilerArgs = listOf("-opt-in=kotlin.RequiresOptIn", "-Xcontext-receivers")
             }
         }
+    }
+}
+
+fun mainFiles() = project
+    .projectDir
+    .listFiles { f: File -> f.name == "src" }
+    ?.firstOrNull()
+    ?.walk()
+    ?.filter { it.isFile && it.readText(Charset.defaultCharset()).contains("fun main") }
+    // ?.map { it.nameWithoutExtension }
+    ?.toList()
+    ?: emptyList()
+
+fun fromPathToClasspath(file: File) = file
+    .path
+    .replaceBefore(fromDotToSeparator(project.group.toString()), "")
+    .dropLast(3)
+    .fromSeparatorToDot()
+
+fun fromDotToSeparator(string: String) = string.replace('.', File.separatorChar)
+fun String.fromSeparatorToDot() = this.replace(File.separatorChar, '.')
+
+mainFiles().forEach {
+    task<JavaExec>(it.nameWithoutExtension) {
+        group = "JaKtA examples"
+        sourceSets.main { classpath = runtimeClasspath }
+        mainClass.set(fromPathToClasspath(it))
+        standardInput = System.`in`
     }
 }
 

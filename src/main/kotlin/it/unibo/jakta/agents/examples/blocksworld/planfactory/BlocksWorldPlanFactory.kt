@@ -1,3 +1,5 @@
+@file:JvmName("BlocksWorldPlanFactory")
+
 package it.unibo.jakta.agents.examples.blocksworld.planfactory
 
 import it.unibo.jakta.agents.bdi.dsl.mas
@@ -29,6 +31,7 @@ fun main() {
                 +achieve("solve"(A, B, C)) then {
                     achieve("solve_with_strategy"(A, B, C))
                     iact("print"("End!"))
+                    execute("stop")
                 }
             }
         }

@@ -1,3 +1,5 @@
+@file:JvmName("BlocksWorldPlanBodyFactory")
+
 package it.unibo.jakta.agents.examples.blocksworld.planbodyfactory
 
 import it.unibo.jakta.agents.bdi.dsl.mas
@@ -31,6 +33,7 @@ fun main() {
                     // from(PlanBodyFactory.dummyStrategy("solve"("on"(X, Y), "on"(Y, Z), "on"(Z, T))))
                     // --------------------------------------------------------------------------------------------
                     iact("print"("End!"))
+                    execute("stop")
                 }
 
                 +achieve("move"(X, Y)) onlyIf {

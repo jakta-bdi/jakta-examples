@@ -1,6 +1,7 @@
-package it.unibo.jakta.agents.bdi.dsl.examples.tris
+@file:JvmName("TicTacToeMas")
 
-import it.unibo.jakta.agents.bdi.Jakta
+package it.unibo.jakta.agents.examples.tris
+
 import it.unibo.jakta.agents.bdi.dsl.MasScope
 import it.unibo.jakta.agents.bdi.dsl.beliefs.BeliefsScope
 import it.unibo.jakta.agents.bdi.dsl.beliefs.fromSelf
@@ -97,9 +98,9 @@ fun PlansScope.randomMove(mySymbol: String) =
 
 fun main() {
     val system = ticTacToe(3)
-    for (agent in system.agents) {
-        Jakta.printAslSyntax(agent)
-    }
-    println("--------------------------------------------------------------------")
+//    for (agent in system.agents) {
+//        Jakta.printAslSyntax(agent)
+//    }
+//    println("--------------------------------------------------------------------")
     system.start()
 }

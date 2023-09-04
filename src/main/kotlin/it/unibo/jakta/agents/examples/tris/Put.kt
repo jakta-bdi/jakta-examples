@@ -1,4 +1,4 @@
-package it.unibo.jakta.agents.bdi.dsl.examples.tris
+package it.unibo.jakta.agents.examples.tris
 
 import it.unibo.jakta.agents.bdi.actions.ExternalRequest
 import it.unibo.jakta.agents.bdi.actions.impl.AbstractExternalAction

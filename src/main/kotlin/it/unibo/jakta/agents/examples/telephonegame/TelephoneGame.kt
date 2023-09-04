@@ -1,4 +1,6 @@
-package it.unibo.jakta.agents.bdi.dsl.examples.telephonegame
+@file:JvmName("TelephoneGame")
+
+package it.unibo.jakta.agents.examples.telephonegame
 
 import it.unibo.jakta.agents.bdi.dsl.mas
 import it.unibo.jakta.agents.bdi.messages.Message
@@ -30,7 +32,7 @@ fun main() {
         repeat(nAgents) { id ->
             agent("ag$id") {
                 beliefs {
-                    fact(receiver("ag${(id + 1) % nAgents}"))
+                    fact { receiver("ag${(id + 1) % nAgents}") }
                 }
                 if (id == 0) goals { achieve(start) }
                 plans {
@@ -46,6 +48,7 @@ fun main() {
                     }
                     +count(source(`_`), X) onlyIf { X greaterThanOrEqualsTo nMessages } then {
                         execute(print("Done!"))
+                        execute("stop")
                     }
                 }
             }
