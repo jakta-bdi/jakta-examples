@@ -97,7 +97,9 @@ fun PlansScope.randomMove(mySymbol: String) =
     +turn(mySymbol) onlyIf { cell(X, Y, e) } then { Put(X, Y, mySymbol) }
 
 fun main() {
-    val system = ticTacToe(3)
+    print("Enter size N of the grid (NxN): ")
+    val number = Integer.parseInt(readln())
+    val system = ticTacToe(number)
 //    for (agent in system.agents) {
 //        Jakta.printAslSyntax(agent)
 //    }

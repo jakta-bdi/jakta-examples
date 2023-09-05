@@ -11,6 +11,7 @@ import it.unibo.jakta.agents.bdi.perception.Perception
 import it.unibo.tuprolog.core.Atom
 import it.unibo.tuprolog.core.Integer
 import it.unibo.tuprolog.core.Struct
+import kotlin.random.Random
 
 class GridEnvironment(
     private val n: Int,
@@ -25,12 +26,13 @@ class GridEnvironment(
 
     companion object {
         internal fun createGrid(n: Int): Array<CharArray> {
-            Array(n) { CharArray(n) { 'e' } }
-            return arrayOf(
-                charArrayOf('e', 'e', 'e'),
-                charArrayOf('x', 'e', 'e'),
-                charArrayOf('e', 'e', 'e'),
-            )
+            val grid = Array(n) { CharArray(n) { 'e' } }
+            (0..n).map {
+                Pair(Random.nextInt(n), Random.nextInt(n))
+            }.forEach {
+                grid[it.first][it.second] = 'x'
+            }
+            return grid
         }
 
         internal fun Array<CharArray>.copy() =

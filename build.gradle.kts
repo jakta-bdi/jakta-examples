@@ -1,3 +1,4 @@
+import org.gradle.configurationcache.extensions.capitalized
 import java.nio.charset.Charset
 
 group = "it.unibo.jakta"
@@ -46,7 +47,7 @@ fun fromDotToSeparator(string: String) = string.replace('.', File.separatorChar)
 fun String.fromSeparatorToDot() = this.replace(File.separatorChar, '.')
 
 mainFiles().forEach {
-    task<JavaExec>(it.nameWithoutExtension) {
+    task<JavaExec>("jakta${it.nameWithoutExtension.capitalized()}") {
         group = "JaKtA examples"
         sourceSets.main { classpath = runtimeClasspath }
         mainClass.set(fromPathToClasspath(it))
