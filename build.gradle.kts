@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.8.20"
-    id("org.danilopianini.gradle-kotlin-qa") version "0.38.1"
+    id("org.danilopianini.gradle-kotlin-qa") version "0.38.2"
 }
 
 repositories {
