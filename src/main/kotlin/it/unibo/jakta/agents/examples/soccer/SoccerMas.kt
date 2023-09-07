@@ -11,10 +11,10 @@ import java.net.URL
 
 fun main() {
     mas { // BDI specification
-    fun allPlayers(team: String) =
-        Regex("""<a\s(\X*?)\sdata-cy="player">(.*)<\/a>""") // Object-oriented Regex library
-            .findAll(URL("https://www.besoccer.com/team/squad/$team").readText())
-            .map { team to it.groupValues[2] } // Monadic manipulation via lambda expression (functional style)
+        fun allPlayers(team: String) =
+            Regex("""<a\s(\X*?)\sdata-cy="player">(.*)<\/a>""") // Object-oriented Regex library
+                .findAll(URL("https://www.besoccer.com/team/squad/$team").readText())
+                .map { team to it.groupValues[2] } // Monadic manipulation via lambda expression (functional style)
 
         listOf("napoli", "milan", "internazionale") // All the Kotlin libraries can be freely used
             .flatMap(::allPlayers) // Higher-order function (Functional style)
