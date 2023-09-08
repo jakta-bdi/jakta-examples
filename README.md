@@ -27,8 +27,8 @@ On a terminal, type the following commands:
 3. Explore the `src` folder, containing examples implemented using `JaKtA` DSL. 
 Choose one file that you want to launch, for example `PingPong`.
 4. Depending on the platform, launch:
-   * Bash compatible (Linux, MacOS X, Git Bash, Cygwin): `./gradlew PingPong`
-   * Windows native (cmd.exe, Powershell): `gradlew.bat PingPong`
+   * Bash compatible (Linux, MacOS X, Git Bash, Cygwin): `./gradlew jaktaPingPong`
+   * Windows native (cmd.exe, Powershell): `gradlew.bat jaktaPingPong`
 
 In addition, you can run `./gradlew tasks` (or `gradlew.bat tasks` if using Windows) to see all the available examples that you can run.
 JaKtA examples are visible under the `JaKtA examples tasks` section.
