@@ -47,13 +47,14 @@ fun main() {
                     "turn"("source"("self"), "other") and "other"("source"("self"), R)
                 } then {
                     update("turn"("source"("self"), "me"))
-                    iact("print"("Received ball from ", R))
+                    iact("print"("Received ball from", R))
                     -"ball"("source"(R))
                     execute("print"("Pinger hasDone"))
+                    execute("stop")
                 }
 
                 +achieve("sendMessageTo"(M, R)) then {
-                    iact("print"("Sending message ", M))
+                    iact("print"("Sending message", M))
                     execute("send"(R, "tell", M))
                 }
             }
@@ -76,10 +77,11 @@ fun main() {
                 +achieve("handle_ping") then {
                     update("turn"("source"("self"), "other"))
                     iact("print"("Ponger has Done"))
+                    execute("stop")
                 }
 
                 +achieve("sendMessageTo"(M, R)) then {
-                    iact("print"("Sending message ", M))
+                    iact("print"("Sending message", M))
                     execute("send"(R, "tell", M))
                 }
             }
