@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
-git clone https://github.com/jakta-bdi/jakta-examples.git ~/Downloads/jakta-examples
+git clone https://github.com/jakta-bdi/jakta-examples.git "~/Downloads/jakta-examples-${date --utc "+%F-%H.%M.%S"}"
 cd ~/Downloads/jakta-examples
 ./gradlew jaktaPingPong
