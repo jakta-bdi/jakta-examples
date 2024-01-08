@@ -5,7 +5,7 @@ group = "it.unibo.jakta"
 
 plugins {
     kotlin("jvm") version "1.9.21"
-    id("org.danilopianini.gradle-kotlin-qa") version "0.56.0"
+    id("org.danilopianini.gradle-kotlin-qa") version "0.57.1"
 }
 
 repositories {
