@@ -7,13 +7,13 @@ import it.unibo.jakta.agents.bdi.dsl.mas
 import it.unibo.jakta.agents.examples.soccer.Literals.print
 import it.unibo.jakta.agents.examples.soccer.Literals.squad
 import it.unibo.jakta.agents.examples.soccer.Literals.start
-import java.net.URL
+import java.net.URI
 
 fun main() {
     mas { // BDI specification
     fun allPlayers(team: String) =
         Regex("""<a\s(\X*?)\sdata-cy="player">(.*)<\/a>""") // Object-oriented Regex library
-            .findAll(URL("https://www.besoccer.com/team/squad/$team").readText())
+            .findAll(URI("https://www.besoccer.com/team/squad/$team").toURL().readText())
             .map { team to it.groupValues[2] } // Monadic manipulation via lambda expression (functional style)
 
         listOf("napoli", "milan", "internazionale") // All the Kotlin libraries can be freely used
