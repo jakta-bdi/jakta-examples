@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation("it.unibo.jakta:jakta-dsl:0.9.11")
+    implementation("it.unibo.jakta:jakta-dsl:0.9.13")
 }
 
 kotlin {
