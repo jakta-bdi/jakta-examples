@@ -4,7 +4,7 @@ import java.nio.charset.Charset
 group = "it.unibo.jakta"
 
 plugins {
-    kotlin("jvm") version "2.0.10"
+    kotlin("jvm") version "2.0.21"
     id("org.danilopianini.gradle-kotlin-qa") version "0.65.2"
 }
 
