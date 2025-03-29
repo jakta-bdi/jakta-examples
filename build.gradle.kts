@@ -1,4 +1,3 @@
-import org.gradle.configurationcache.extensions.capitalized
 import java.nio.charset.Charset
 
 group = "it.unibo.jakta"
@@ -42,11 +41,15 @@ fun fromPathToClasspath(file: File) = file
 fun fromDotToSeparator(string: String) = string.replace('.', File.separatorChar)
 fun String.fromSeparatorToDot() = this.replace(File.separatorChar, '.')
 
-mainFiles().forEach {
-    task<JavaExec>("jakta${it.nameWithoutExtension.capitalized()}") {
+mainFiles().forEach { mainFile ->
+    task<JavaExec>(
+        "jakta${
+            mainFile.nameWithoutExtension.replaceFirstChar { it.titlecase() }
+        }",
+    ) {
         group = "JaKtA examples"
         sourceSets.main { classpath = runtimeClasspath }
-        mainClass.set(fromPathToClasspath(it))
+        mainClass.set(fromPathToClasspath(mainFile))
         standardInput = System.`in`
     }
 }
