@@ -1,5 +1,7 @@
 # JaKtA systems examples
-This repository contains some JaKtA implementation to test the syntax and the execution of the agent framework.
+This repository contains some old JaKtA examples to showcase the syntax and the execution of the agent framework in its early versions prior to 1.0.0
+
+Please check out https://github.com/jakta-bdi/jakta/tree/main/examples for newer examples.
 
 
 ## Prerequisites
